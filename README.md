@@ -8,3 +8,4 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 * [./doc/ResiBarcode.tsv](./doc/ResiBarcode.tsv): Describes the nucleotide sequence for HA2 residues 43, 44, 50, and 112, which serves as an internal barcode. Silent mutations were introduced into HA2 residues 43, 44, 50, and 112, to index which residues were being randomized. 
 
 ### ANALYSIS PIPELINE
+1. [./HK68\_Stem\_read\_to\_count.py](./HK68_Stem_read_to_count.py): Convert raw reads to variant counts
