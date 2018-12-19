@@ -10,7 +10,8 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 ### ANALYSIS PIPELINE
 1. [./HK68\_Stem\_read\_to\_count.py](./HK68_Stem_read_to_count.py): Convert raw reads to variant counts
     - Input files: 
-      * Raw sequencing reads in fastq/ folder
+      - Raw sequencing reads in fastq/ folder
       - [./doc/SampleID.tsv](./doc/SampleID.tsv)
       - [./doc/WTCodon.tsv](./doc/WTCodon.tsv)
       - [./doc/ResiBarcode.tsv](./doc/ResiBarcode.tsv)
+    - Output files: count/count\_\*.tsv
