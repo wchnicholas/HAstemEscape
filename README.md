@@ -22,7 +22,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 3. [./script/HK68\_Stem\_compute\_resistance.py](./script/HK68\_Stem\_compute\_resistance.py): Computes relative resistance based on relative fitness.
     - Input files: result/Fitness\_\*.tsv
     - Output files: result/Resist\_\*.tsv
-4. [./script/HK68\_format\_heatmap.py](./script/HK68\_format\_heatmap.py]): Generates the input file for double mutant heatmap plotting.
+4. [./script/HK68\_format\_heatmap.py](./script/HK68\_format\_heatmap.py): Generates the input file for double mutant heatmap plotting.
     - Input file: [./result/Resist\_D.tsv](./result/Resist\_D.tsv)
     - Output file: [./result/Heatmap\_D.tsv](./result/Heatmap\_D.tsv)
 
