@@ -7,7 +7,9 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 * [./doc/SampleID.tsv](./doc/SampleID.tsv): Describes the sample identity for each fastq file.
 * [./doc/WTCodon.tsv](./doc/WTCodon.tsv): Describes the wild type nucleotide sequence for the residues of interest
 * [./doc/ResiBarcode.tsv](./doc/ResiBarcode.tsv): Describes the nucleotide sequence for HA2 residues 43, 44, 50, and 112, which serves as an internal barcode. Silent mutations were introduced into HA2 residues 43, 44, 50, and 112, to index which residues were being randomized. 
-* [./doc/HK68\_WTheatmap.tsv](./doc/HK68\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap.
+* [./doc/HK68\_WTheatmap.tsv](./doc/HK68\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap HK68.
+* [./doc/WSN\_WTheatmap.tsv](./doc/WSN\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap for WSN.
+* [./doc/Perth09\_WTheatmap.tsv](./doc/Perth09\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap for Perth09.
 
 ### ANALYSIS PIPELINE
 1. [./script/HK68\_Stem\_read\_to\_count.py](./script/HK68_Stem_read_to_count.py): Converts raw reads to variant counts.
@@ -78,3 +80,15 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 7. [./script/Plot\_resi45\_fit.R](./script/Plot\_resi45\_fit.R): Plots the fitness of different variants at HA2 residue 45 for HK68, Perth09, and WSN. 
     - Input file: [./result/Fit\_compare.tsv](./result/Fit\_compare.tsv)
     - Output file: [./graph/resi45\_fit.png](./graph/resi45\_fit.png)
+8. [./script/Plot\_resist\_heatmap\_Perth09.R](./script/Plot\_resist\_heatmap\_Perth09.R):
+    - Input files:
+      - [./doc/Perth09\_WTheatmap.tsv](./doc/Perth09\_WTheatmap.tsv)
+      - [./result/Fitness\_Perth09.tsv](./result/Fitness\_Perth09.tsv)
+    - Output files: [./graph/heatmap\_FI6v3esp\_single\_Perth09.png](./graph/heatmap\_FI6v3esp\_single\_Perth09.png)
+9. [./script/Plot\_resist\_heatmap\_WSN.R](./script/Plot\_resist\_heatmap\_WSN.R): 
+    - Input files:
+      - [./doc/WSN\_WTheatmap.tsv](./doc/WSN\_WTheatmap.tsv)
+      - [./result/Fitness\_WSN.tsv](./result/Fitness\_WSN.tsv)
+    - Output files:
+      - [./graph/heatmap\_FI6v3esp\_single\_WSN.png](./graph/heatmap\_FI6v3esp\_single\_WSN.png)
+      - [./graph/heatmap\_CR9114esp\_single\_WSN.png](./graph/heatmap\_CR9114esp\_single\_WSN.png)
