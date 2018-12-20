@@ -9,7 +9,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 * [./doc/HK68\_WTheatmap.tsv](./doc/HK68\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap.
 
 ### ANALYSIS PIPELINE
-1. [./HK68\_Stem\_read\_to\_count.py](./HK68_Stem_read_to_count.py): Converts raw reads to variant counts.
+1. [./script/HK68\_Stem\_read\_to\_count.py](./script/HK68_Stem_read_to_count.py): Converts raw reads to variant counts.
     - Input files: 
       - Raw sequencing reads in fastq/ folder
       - [./doc/SampleID.tsv](./doc/SampleID.tsv)
