@@ -80,12 +80,12 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 7. [./script/Plot\_resi45\_fit.R](./script/Plot\_resi45\_fit.R): Plots the fitness of different variants at HA2 residue 45 for HK68, Perth09, and WSN. 
     - Input file: [./result/Fit\_compare.tsv](./result/Fit\_compare.tsv)
     - Output file: [./graph/resi45\_fit.png](./graph/resi45\_fit.png)
-8. [./script/Plot\_resist\_heatmap\_Perth09.R](./script/Plot\_resist\_heatmap\_Perth09.R):
+8. [./script/Plot\_resist\_heatmap\_Perth09.R](./script/Plot\_resist\_heatmap\_Perth09.R): Plots the heatmap for single mutant relative resistance for Perth09
     - Input files:
       - [./doc/Perth09\_WTheatmap.tsv](./doc/Perth09\_WTheatmap.tsv)
       - [./result/Fitness\_Perth09.tsv](./result/Fitness\_Perth09.tsv)
     - Output files: [./graph/heatmap\_FI6v3esp\_single\_Perth09.png](./graph/heatmap\_FI6v3esp\_single\_Perth09.png)
-9. [./script/Plot\_resist\_heatmap\_WSN.R](./script/Plot\_resist\_heatmap\_WSN.R): 
+9. [./script/Plot\_resist\_heatmap\_WSN.R](./script/Plot\_resist\_heatmap\_WSN.R): Plots the heatmap for single mutant relative resistance for WSN
     - Input files:
       - [./doc/WSN\_WTheatmap.tsv](./doc/WSN\_WTheatmap.tsv)
       - [./result/Fitness\_WSN.tsv](./result/Fitness\_WSN.tsv)
