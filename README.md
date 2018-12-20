@@ -26,12 +26,18 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 4. [./script/HK68\_format\_heatmap.py](./script/HK68\_format\_heatmap.py): Generates the input file for double mutant heatmap plotting.
     - Input file: [./result/Resist\_D.tsv](./result/Resist\_D.tsv)
     - Output file: [./result/Heatmap\_D.tsv](./result/Heatmap\_D.tsv)
-5. [./script/Perth09\_count2fit.py](./script/Perth09\_count2fit.py)
+5. [./script/Perth09\_count2fit.py](./script/Perth09\_count2fit.py): Computes relative fitness from Perth09 count data.
     - Input file: Bloom\_data/Perth09\/\*.csv
     - Output file: [./result/Fitness\_Perth09.tsv](./result/Fitness\_Perth09.tsv)
-5. [./script/WSN\_count2fit.py](./script/WSN\_count2fit.py)
+6. [./script/WSN\_count2fit.py](./script/WSN\_count2fit.py): Computes relative fitness from WSN count data.
     - Input file: Bloom\_data/WSN/\*.csv
     - Output file: [./result/Fitness\_WSN.tsv](./result/Fitness\_WSN.tsv)
+7. [./script/Compare\_strains.py](./script/Compare\_strains.py): Compile single mutant fitness data from HK68, Perth09, and WSN into a single file
+    - Input files:
+      - [./result/Resist\_S.tsv](./result/Resist\_S.tsv)
+      - [./result/Fitness\_Perth09.tsv](./result/Fitness\_Perth09.tsv)
+      - [./result/Fitness\_WSN.tsv](./result/Fitness\_WSN.tsv)
+    - Output file: [./result/Fit\_compare.tsv](./result/Fit\_compare.tsv)
 
 ### PLOTTING
 1. [./script/Plot\_HK68\_single\_fit\_heatmap.R](./script/Plot\_HK68\_single\_fit\_heatmap.R): Plots the heatmap of single mutant relative fitness.
