@@ -38,6 +38,6 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
       - [./result/Resist\_S.tsv](./result/Resist\_S.tsv)
       - [./result/Heatmap\_D.tsv](./result/Heatmap\_D.tsv)
     - Output files: graph/heatmap\_\*esp\_single\*.png
-3. [./script/Plot\_double\_heatmap.R](./Plot\_double\_heatmap.R)
+3. [./script/Plot\_double\_heatmap.R](./script/Plot\_double\_heatmap.R)
     - Input file: [./result/Heatmap\_D.tsv](./result/Heatmap\_D.tsv)
     - Output files: graph/heatmap\_\*\_double.png
