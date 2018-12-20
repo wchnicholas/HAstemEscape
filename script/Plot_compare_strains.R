@@ -53,26 +53,26 @@ plot_scatter <- function(fit_table,graphname,xlab,ylab){
 FitTable  <- read_tsv('result/Fit_compare.tsv') %>%
                 mutate(color=mapply(color_by_resi,pos)) %>%
                 mutate(size=mapply(size_by_resi,pos)) %>%
-                filter(HK68_fit_A0!=-1)
+                filter(HK68_fit_no_antibody!=-1)
 fit_table_vsWSN <- FitTable %>%
-                     select(HK68_fit_A0, WSN_fit_mock, color, size) %>%
-                     rename(HK68=HK68_fit_A0) %>%
+                     select(HK68_fit_no_antibody, WSN_fit_mock, color, size) %>%
+                     rename(HK68=HK68_fit_no_antibody) %>%
                      rename(Other=WSN_fit_mock)
 fit_table_vsPerth09 <- FitTable %>%
-                         select(HK68_fit_A0, Perth09_fit_mock, color, size) %>%
-                         rename(HK68=HK68_fit_A0) %>%
+                         select(HK68_fit_no_antibody, Perth09_fit_mock, color, size) %>%
+                         rename(HK68=HK68_fit_no_antibody) %>%
                          rename(Other=Perth09_fit_mock)
 fit_table_vsPerth09_FI6v3 <- FitTable %>%
-			       select(HK68_fit_F5, Perth09_fit_FI6v3_15ug, color, size) %>%
-			       rename(HK68=HK68_fit_F5) %>%
+			       select(HK68_fit_2500ng_FI6v3, Perth09_fit_FI6v3_15ug, color, size) %>%
+			       rename(HK68=HK68_fit_2500ng_FI6v3) %>%
 			       rename(Other=Perth09_fit_FI6v3_15ug)
 fit_table_vsWSN_FI6v3 <- FitTable %>%
-		           select(HK68_fit_F5, WSN_fit_FI6v3_200ng, color, size) %>%
-		           rename(HK68=HK68_fit_F5) %>%
+		           select(HK68_fit_2500ng_FI6v3, WSN_fit_FI6v3_200ng, color, size) %>%
+		           rename(HK68=HK68_fit_2500ng_FI6v3) %>%
 		           rename(Other=WSN_fit_FI6v3_200ng)
 fit_table_vsWSN_CR9114 <- FitTable %>%
-		            select(HK68_fit_A5, WSN_fit_CR9114_100ng, color, size) %>%
-		            rename(HK68=HK68_fit_A5) %>%
+		            select(HK68_fit_10ug_CR9114, WSN_fit_CR9114_100ng, color, size) %>%
+		            rename(HK68=HK68_fit_10ug_CR9114) %>%
 		            rename(Other=WSN_fit_CR9114_100ng)
 plot_scatter(fit_table_vsWSN,'graph/scatter_fit_WSN_compare.png','HK68 (no antibody)','WSN (no antibody)')
 plot_scatter(fit_table_vsPerth09,'graph/scatter_fit_Perth09_compare.png','HK68 (no antibody)','Perth09 (no antibody)')

@@ -24,7 +24,7 @@ def TsvWithHeader2Hash(fitfile):
 def compile_fitdict(fitdict_HK68, fitdict_WSN, fitdict_Perth09,aas,residues, outfile):
   print "writing: %s" % outfile
   outfile = open(outfile,'w')
-  outfile.write("\t".join(['pos', 'aa', 'HK68_fit_A0', 'HK68_fit_2ug_CR9114', 'HK68_fit_10ug_CR9114', 'HK68_fit_300ng_FI6v3', 'HK68_fit_2500ng_FI6v3',
+  outfile.write("\t".join(['pos', 'aa', 'HK68_fit_no_antibody', 'HK68_fit_2ug_CR9114', 'HK68_fit_10ug_CR9114', 'HK68_fit_300ng_FI6v3', 'HK68_fit_2500ng_FI6v3',
                            'WSN_fit_mock', 'WSN_fit_CR9114_50ng', 'WSN_fit_CR9114_70ng', 'WSN_fit_CR9114_100ng', 
                            'WSN_fit_FI6v3_100ng', 'WSN_fit_FI6v3_200ng', 'Perth09_fit_mock', 'Perth09_fit_FI6v3_15ug'])+"\n")
   for residue in residues:
@@ -35,7 +35,7 @@ def compile_fitdict(fitdict_HK68, fitdict_WSN, fitdict_Perth09,aas,residues, out
       WSN_fit_CR9114_100ng   = ''
       Perth09_fit_mock       = ''
       Perth09_fit_FI6v3_15ug = ''
-      HK68_fit_A0            = '1.0'
+      HK68_fit_no_antibody            = '1.0'
       HK68_fit_2ug_CR9114            = '1.0'
       HK68_fit_10ug_CR9114            = '1.0'
       HK68_fit_300ng_FI6v3            = '1.0'
@@ -58,13 +58,13 @@ def compile_fitdict(fitdict_HK68, fitdict_WSN, fitdict_Perth09,aas,residues, out
             Perth09_fit_FI6v3_15ug = fitdict_Perth09[ID_Perth09]['fit_FI6v3_15ug']
       for ID_HK68 in fitdict_HK68.keys():
         if fitdict_HK68[ID_HK68]['resi']+fitdict_HK68[ID_HK68]['aa'] == residue+aa:
-          HK68_fit_A0 = fitdict_HK68[ID_HK68]['fit_no_antibody']
+          HK68_fit_no_antibody = fitdict_HK68[ID_HK68]['fit_no_antibody']
           HK68_fit_2ug_CR9114 = fitdict_HK68[ID_HK68]['fit_2ug_CR9114']
           HK68_fit_10ug_CR9114 = fitdict_HK68[ID_HK68]['fit_10ug_CR9114']
           HK68_fit_300ng_FI6v3 = fitdict_HK68[ID_HK68]['fit_300ng_FI6v3']
           HK68_fit_2500ng_FI6v3 = fitdict_HK68[ID_HK68]['fit_2500ng_FI6v3']
       outfile.write("\t".join([residue, aa,
-                               HK68_fit_A0, HK68_fit_2ug_CR9114, HK68_fit_10ug_CR9114,
+                               HK68_fit_no_antibody, HK68_fit_2ug_CR9114, HK68_fit_10ug_CR9114,
                                HK68_fit_300ng_FI6v3, HK68_fit_2500ng_FI6v3,
                                WSN_fit_mock, WSN_fit_CR9114_50ng, WSN_fit_CR9114_70ng,
                                WSN_fit_CR9114_100ng, WSN_fit_FI6v3_100ng, WSN_fit_FI6v3_200ng,
