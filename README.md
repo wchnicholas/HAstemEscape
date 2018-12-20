@@ -45,12 +45,18 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
       - [./doc/HK68\_WTheatmap.tsv](./doc/HK68\_WTheatmap.tsv)
       - [./result/Resist\_S.tsv](./result/Resist\_S.tsv)
     - Output file: [./graph/heatmap\_fit\_single.png](./graph/heatmap\_fit\_single.png)
-2. [./script/Plot\_HK68\_resist\_heatmap.R](./script/Plot\_HK68\_resist\_heatmap.R): Plots the heatmap for single mutant relative resistance and also for the single mutant relative resistance with a background mutation
+2. [./script/Plot\_HK68\_resist\_heatmap.R](./script/Plot\_HK68\_resist\_heatmap.R): Plots the heatmap for single mutant relative resistance and also for the single mutant relative resistance with a background mutation.
     - Input files:
       - [./doc/HK68\_WTheatmap.tsv](./doc/HK68\_WTheatmap.tsv)
       - [./result/Resist\_S.tsv](./result/Resist\_S.tsv)
       - [./result/Heatmap\_D.tsv](./result/Heatmap\_D.tsv)
     - Output files: graph/heatmap\_\*esp\_single\*.png
-3. [./script/Plot\_double\_heatmap.R](./script/Plot\_double\_heatmap.R)
+3. [./script/Plot\_double\_heatmap.R](./script/Plot\_double\_heatmap.R): Plots the fitness heatmap and resistance heatmap for double mutant.
     - Input file: [./result/Heatmap\_D.tsv](./result/Heatmap\_D.tsv)
     - Output files: graph/heatmap\_\*\_double.png
+4. [./script/Plot\_compare\_strains.R](./script/Plot\_compare\_strains.R): Generates scatter plots for comparing the relative fitness data of HK68, Perth09, and WSN.
+    - Input file: [./result/Fit\_compare.tsv](./result/Fit\_compare.tsv)
+    - Output files: graph/scatter\_fit\_\*.png
+5. [./script/Plot\_resi45\_fit.R](./script/Plot\_resi45\_fit.R): Plots the fitness of different variants at HA2 residue 45 for HK68, Perth09, and WSN. 
+    - Input file: [./result/Fit\_compare.tsv](./result/Fit\_compare.tsv)
+    - Output file: [./graph/resi45\_fit.png](./graph/resi45\_fit.png)
