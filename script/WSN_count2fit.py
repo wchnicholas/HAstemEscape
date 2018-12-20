@@ -70,7 +70,7 @@ def count_to_freq(count_dict, sampleID, residue, aa):
 
 def compile_out_WSN(count_dict, outfile):
   aas = ['E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_']
-  residues = [residue for ID in count_dict.keys() for residue in count_dict[ID].keys()]
+  residues = list(set([residue for ID in count_dict.keys() for residue in count_dict[ID].keys()]))
   print "writing %s" % outfile
   outfile = open(outfile,'w')
   outfile.write("\t".join(map(str,['mutID', 'fit_L1_mock', 'fit_L2_mock', 'fit_L3_mock',
