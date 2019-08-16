@@ -21,3 +21,13 @@ fastq/FI6-5_S10_L001_R1_001.fastq	single_rep1_2500ng_FI6v3
 fastq/FI6-6_S11_L001_R1_001.fastq	single_rep2_2500ng_FI6v3
 fastq/FI6-7_S12_L001_R1_001.fastq	double_rep1_2500ng_FI6v3
 fastq/FI6-8_S13_L001_R1_001.fastq	double_rep2_2500ng_FI6v3
+fastq/H1lib_S1_R1_001.fastq	SI06_rep1_no_antibody
+fastq/H1lib_S2_R1_001.fastq	SI06_rep2_no_antibody
+fastq/H1lib_S3_R1_001.fastq	Mich15_rep1_no_antibody
+fastq/H1lib_S4_R1_001.fastq	Mich15_rep2_no_antibody
+fastq/H1lib_S5_R1_001.fastq	SI06_rep1_300ng_FI6v3
+fastq/H1lib_S6_R1_001.fastq	SI06_rep2_300ng_FI6v3
+fastq/H1lib_S7_R1_001.fastq	Mich15_rep1_300ng_FI6v3
+fastq/H1lib_S8_R1_001.fastq	Mich15_rep2_300ng_FI6v3
+fastq/H1lib_S9_R1_001.fastq	SI06_input
+fastq/H1lib_S10_R1_001.fastq	Mich15_input

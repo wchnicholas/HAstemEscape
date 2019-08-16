@@ -1,5 +1,5 @@
 ## ANALYSIS FOR HK68 H3N2 HA STEM DEEP MUTATIONAL SCANNING
-This study aims to search for mutations that can escape HA stem-binding broadly neutralizing antibodies (bnAbs). The repository here describes the analysis for the deep mutational scanning experiment of HA2 residues 42, 45, 46, 47, 48, 49, 52, and 111 of A/Hong Kong/1/1968 (HK68).
+This study aims to search for mutations that can escape HA stem-binding broadly neutralizing antibodies (bnAbs). The repository here describes the analysis for the deep mutational scanning experiment that focuses on HA2 residues 42, 45, 46, 47, 48, 49, 52, and 111.
 
 ### INPUT FILE
 * All raw sequencing reads, which can be downloaded from NIH SRA database [PRJNA510654](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA510654), should be placed in fastq/ folder. The filename for read 1 should match those described in [./doc/SampleID.tsv](./doc/SampleID.tsv). The filename for read 2 should be the same as read 1 except "R1" is replaced by "R2".
@@ -11,7 +11,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 * [./doc/WSN\_WTheatmap.tsv](./doc/WSN\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap for WSN.
 * [./doc/Perth09\_WTheatmap.tsv](./doc/Perth09\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap for Perth09.
 
-### ANALYSIS PIPELINE
+### ANALYSIS PIPELINE FOR HK68 (H3N2), PERTH09 (H3N2), and WSN (H1N1)
 1. [./script/HK68\_Stem\_read\_to\_count.py](./script/HK68_Stem_read_to_count.py): Converts raw reads to variant counts.
     - Input files: 
       - Raw sequencing reads in fastq/ folder
@@ -47,6 +47,25 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
       - [./result/Fitness\_WSN.tsv](./result/Fitness\_WSN.tsv)
     - Output file: [./result/Fit\_compare.tsv](./result/Fit\_compare.tsv)
 
+### ANALYSIS PIPELINE FOR SI06 (H1N1) and MICH15 (H1N1)
+1. [./script/H1\_Stem\_read\_to\_count.py](./script/H1_Stem_read_to_count.py): Converts raw reads to variant counts.
+    - Input files: 
+      - Raw sequencing reads in fastq/ folder
+      - [./doc/SampleID.tsv](./doc/SampleID.tsv)
+    - Output files: count/count\_\*.tsv
+2. [./script/H1\_Stem\_count\_to\_fitness.py](./script/H1_Stem_count_to_fitness.py): Computes relative fitness based on read counts.
+    - Input files: count/count\_\*.tsv
+    - Output files:
+      - [./result/Fitness\_SI06.tsv](./result/Fitness\_SI06.tsv)
+      - [./result/Fitness\_Mich15.tsv](./result/Fitness\_Mich15.tsv) 
+3. [./script/H1\_Stem\_compute\_resistance.py](./script/H1\_Stem\_compute\_resistance.py): Computes relative resistance based on relative fitness.
+    - Input files:
+      - [./result/Fitness\_SI06.tsv](./result/Fitness\_SI06.tsv)
+      - [./result/Fitness\_Mich15.tsv](./result/Fitness\_Mich15.tsv)
+    - Output files:
+      - [./result/Resist\_SI06.tsv](./result/Resist\_SI06.tsv)
+      - [./result/Resist\_Mich15.tsv](./result/Resist\_Mich15.tsv)
+
 ### PLOTTING
 1. [./script/Plot\_rep\_cor.R](./script/Plot\_rep\_cor.R): Plots correlation between replicates 
     - Input files: 
@@ -64,7 +83,11 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
     - Input files:
       - [./doc/HK68\_WTheatmap.tsv](./doc/HK68\_WTheatmap.tsv)
       - [./result/Resist\_S.tsv](./result/Resist\_S.tsv)
+      - [./doc/SI06\_WTheatmap.tsv](./doc/SI06\_WTheatmap.tsv)
+      - [./doc/Mich15\_WTheatmap.tsv](./doc/Mich15\_WTheatmap.tsv)
     - Output file: [./graph/heatmap\_fit\_single.png](./graph/heatmap\_fit\_single.png)
+    - Output file: [./graph/heatmap\_fit\_single\_SI06.png](./graph/heatmap\_fit\_single\_SI06.png)
+    - Output file: [./graph/heatmap\_fit\_single\_Mich15.png](./graph/heatmap\_fit\_single\_Mich15.png)
 4. [./script/Plot\_HK68\_resist\_heatmap.R](./script/Plot\_HK68\_resist\_heatmap.R): Plots the heatmap for single mutant relative resistance and also for the single mutant relative resistance with a background mutation.
     - Input files:
       - [./doc/HK68\_WTheatmap.tsv](./doc/HK68\_WTheatmap.tsv)
@@ -92,3 +115,12 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
     - Output files:
       - [./graph/heatmap\_FI6v3esp\_single\_WSN.png](./graph/heatmap\_FI6v3esp\_single\_WSN.png)
       - [./graph/heatmap\_CR9114esp\_single\_WSN.png](./graph/heatmap\_CR9114esp\_single\_WSN.png)
+10. [./script/Plot\_H1\_resist\_heatmap.R](./script/Plot\_H1\_resist\_heatmap.R): Plots the heatmap for single mutant relative resistance and also for the single mutant relative resistance with a background mutation.
+    - Input files:
+      - [./doc/Mich15\_WTheatmap.tsv](./doc/SI06\_WTheatmap.tsv)
+      - [./doc/SI06\_WTheatmap.tsv](./doc/Mich15\_WTheatmap.tsv)
+      - [./result/Resist\_SI06.tsv](./result/Resist\_SI06.tsv)
+      - [./result/Heatmap\_Mich15.tsv](./result/Heatmap\_Mich15.tsv)
+    - Output files:
+      - [graph/heatmap\_FI6v3esp\_single\_Mich15.png](graph/heatmap\_FI6v3esp\_single\_Mich15.png)
+      - [graph/heatmap\_FI6v3esp\_single\_SI06.png](graph/heatmap\_FI6v3esp\_single\_SI06.png)

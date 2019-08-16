@@ -61,7 +61,7 @@ plot_esp_heatmap2 <- function(EspTable,graphname){
           geom_tile(data=EspTable, aes(x=mut1,y=mut2,fill=mapply(capping5,score))) +
           scale_fill_gradientn(colours=c("green", "white", "white", "white", "purple"),
                 limits= c(0,5),
-                values=rescale(c(0, 0.5, 1, 2, 5)),
+                values=rescale(c(0, 0.8, 1, 2, 5)),
                 guide="colorbar",
                 breaks=c(0,1,2,3,4,5),
                 labels=c('0.0','1.0','2.0','3.0','4.0','5.0'),

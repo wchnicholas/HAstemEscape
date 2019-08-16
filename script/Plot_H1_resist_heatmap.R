@@ -24,18 +24,18 @@ extract_SEscape <- function(DEspTable, mut_bg, aa_levels, pos_levels, SEspTable)
       new_pos_levels <- c(new_pos_levels, pos)
       }
     }
-  A0 <- filter(SEspTable, mut==mut_bg)$fitA0
-  A5 <- filter(SEspTable, mut==mut_bg)$EspA5
-  F5 <- filter(SEspTable, mut==mut_bg)$EspF5
+  A0 <- filter(SEspTable, mut==mut_bg)$fit_no_antibody
+  A5 <- filter(SEspTable, mut==mut_bg)$resist_10ug_CR9114
+  F5 <- filter(SEspTable, mut==mut_bg)$resist_2500ng_FI6v3
   A0_list   <- rep(A0,8)
   A5_list   <- rep(A5,8)
   F5_list   <- rep(F5,8)
   mut_list  <- c('Q42Q','I45I','D46D','Q47Q','I48I','N49N','L52L','T111T')
   WT_table  <- data.frame(cbind(mut_list,A0_list,A5_list,F5_list)) %>%
                  rename(mut=mut_list) %>%
-                 rename(fitA0=A0_list) %>%
-                 rename(espA5=A5_list) %>%
-                 rename(espF5=F5_list) %>%
+                 rename(fit_no_antibody=A0_list) %>%
+                 rename(resist_10ug_CR9114=A5_list) %>%
+                 rename(resist_2500ng_FI6v3=F5_list) %>%
                  filter(str_sub(mut,2,-2)!=str_sub(mut_bg,2,-2))
   resi_SEspTable_1 <- DEspTable %>% 
                       filter(mut1==mut_bg) %>% 
@@ -50,9 +50,9 @@ extract_SEscape <- function(DEspTable, mut_bg, aa_levels, pos_levels, SEspTable)
                       mutate(aa=str_sub(mut,-1)) %>%
                       mutate(resi=factor(as.character(resi),levels=new_pos_levels)) %>%
                       mutate(aa=factor(as.character(aa),levels=aa_levels)) %>%
-                      mutate(fitA0=mapply(as.numeric,fitA0)) %>%
-                      mutate(espA5=mapply(as.numeric,espA5)) %>%
-                      mutate(espF5=mapply(as.numeric,espF5))
+                      mutate(fit_no_antibody=mapply(as.numeric,fit_no_antibody)) %>%
+                      mutate(resist_10ug_CR9114=mapply(as.numeric,resist_10ug_CR9114)) %>%
+                      mutate(resist_2500ng_FI6v3=mapply(as.numeric,resist_2500ng_FI6v3))
   return (resi_SEspTable)
   }
 
@@ -67,8 +67,10 @@ plot_fit_heatmap <- function(EspTable,pos_bg, WTresibox,graphname){
     }
   p <-  ggplot() + 
 	  geom_tile(data=EspTable, aes(x=resi,y=aa,fill=mapply(capping,X))) +
-	  scale_fill_gradientn(colours=c("green", "white", "white", "white", "purple"),
+	  scale_fill_gradientn(#colours=c("green", "white", "white", "white", "purple"),
+	        colours=c("green", "white", "white", "white", "purple"),
                 limits= c(0,5),
+		#values=rescale(c(0, 0.5, 1, 2, 5)),
 		values=rescale(c(0, 0.8, 1, 2, 5)),
 		guide="colorbar",
                 breaks=c(0,1,2,3,4,5),
@@ -90,17 +92,17 @@ plot_fit_heatmap <- function(EspTable,pos_bg, WTresibox,graphname){
   ggsave(graphname,p,width=1.9,height=2.2,dpi=600)
   }
 
-aa_levels  <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
-pos_levels <- c('42','45','46','47','48','49','52','111')
-WTresibox  <- read_tsv('doc/Perth09_WTheatmap.tsv')
-SEspTable  <- read_tsv('result/Fitness_Perth09.tsv') %>%
-                filter(str_sub(mutID,-5)=='(HA2)') %>%
-                mutate(resi=str_sub(mutID,2,-8)) %>%
-                filter(resi %in% pos_levels) %>%
-                mutate(aa=str_sub(mutID,-7,-7)) %>%
+wrapper <- function(strain){
+  aa_levels  <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
+  pos_levels <- c('42','45','46','47','48','49','52','111')
+  WTresibox  <- read_tsv(paste('doc/',strain,'_WTheatmap.tsv',sep=''))
+  SEspTable  <- read_tsv(paste('result/Resist_',strain,'.tsv',sep='')) %>%
 		mutate(resi=factor(as.character(resi),levels=pos_levels)) %>%
 		mutate(aa=factor(as.character(aa),levels=aa_levels))
-print (SEspTable)
-EspF5_table <- SEspTable %>%
-                 mutate(X=esp_FI6v3_15ug)
-plot_fit_heatmap(EspF5_table,'',WTresibox,'graph/heatmap_FI6v3esp_single_Perth09.png')
+  EspF1_table <- SEspTable %>%
+		   mutate(X=resist_300ng_FI6v3)
+  plot_fit_heatmap(EspF1_table,'',WTresibox,paste('graph/heatmap_FI6v3esp_single_',strain,'.png',sep=''))
+  }
+
+wrapper('SI06')
+wrapper('Mich15')

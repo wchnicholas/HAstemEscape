@@ -76,6 +76,6 @@ fit_table_vsWSN_CR9114 <- FitTable %>%
 		            rename(Other=WSN_fit_CR9114_100ng)
 plot_scatter(fit_table_vsWSN,'graph/scatter_fit_WSN_compare.png','HK68 (no antibody)','WSN (no antibody)')
 plot_scatter(fit_table_vsPerth09,'graph/scatter_fit_Perth09_compare.png','HK68 (no antibody)','Perth09 (no antibody)')
-plot_scatter(fit_table_vsPerth09_FI6v3,'graph/scatter_fit_Perth09_FI6v3_compare.png','HK68 (0.3 ug/mL FI6v3)','Perth09 (15 ug/mL FI6v3)')
-plot_scatter(fit_table_vsWSN_FI6v3,'graph/scatter_fit_WSN_FI6v3_compare.png','HK68 (0.3 ug/mL FI6v3)','WSN (0.2 ug/mL FI6v3)')
+plot_scatter(fit_table_vsPerth09_FI6v3,'graph/scatter_fit_Perth09_FI6v3_compare.png','HK68 (2.5 ug/mL FI6v3)','Perth09 (15 ug/mL FI6v3)')
+plot_scatter(fit_table_vsWSN_FI6v3,'graph/scatter_fit_WSN_FI6v3_compare.png','HK68 (2.5 ug/mL FI6v3)','WSN (0.2 ug/mL FI6v3)')
 plot_scatter(fit_table_vsWSN_CR9114,'graph/scatter_fit_WSN_CR9114_compare.png','HK68 (10 ug/mL CR9114)','WSN (0.1 ug/mL CR9114)')

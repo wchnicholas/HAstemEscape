@@ -43,10 +43,17 @@ plot_fit_heatmap <- function(EspTable,WTresibox,graphname){
   ggsave(graphname,p,width=1.9,height=2.2,dpi=600)
   }
 
-aa_levels  <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
-pos_levels <- c('42','45','46','47','48','49','52','111')
-WTresibox  <- read_tsv('doc/HK68_WTheatmap.tsv')
-SEspTable  <- read_tsv('result/Resist_S.tsv') %>%
-              mutate(resi=factor(as.character(resi),levels=pos_levels)) %>%
-              mutate(aa=factor(as.character(aa),levels=aa_levels))
-plot_fit_heatmap(SEspTable,WTresibox,'graph/heatmap_fit_single.png')
+wrapper <- function(WTresibox_file, resist_file, graphname){
+  aa_levels  <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
+  pos_levels <- c('42','45','46','47','48','49','52','111')
+  WTresibox  <- read_tsv(WTresibox_file)
+  SEspTable  <- read_tsv(resist_file) %>%
+		mutate(resi=factor(as.character(resi),levels=pos_levels)) %>%
+		mutate(aa=factor(as.character(aa),levels=aa_levels))
+  plot_fit_heatmap(SEspTable,WTresibox,graphname)
+  }
+
+wrapper('doc/HK68_WTheatmap.tsv', 'result/Resist_S.tsv', 'graph/heatmap_fit_single.png')
+wrapper('doc/SI06_WTheatmap.tsv', 'result/Resist_SI06.tsv', 'graph/heatmap_fit_single_SI06.png')
+wrapper('doc/Mich15_WTheatmap.tsv', 'result/Resist_Mich15.tsv', 'graph/heatmap_fit_single_Mich15.png')
+
