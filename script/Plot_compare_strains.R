@@ -74,8 +74,28 @@ fit_table_vsWSN_CR9114 <- FitTable %>%
 		            select(HK68_fit_10ug_CR9114, WSN_fit_CR9114_100ng, color, size) %>%
 		            rename(HK68=HK68_fit_10ug_CR9114) %>%
 		            rename(Other=WSN_fit_CR9114_100ng)
+fit_table_vsH1_FI6v3  <- FitTable %>%
+		           select(Mich15_fit_300ng_FI6v3, SI06_fit_300ng_FI6v3, color, size) %>%
+		           rename(HK68=Mich15_fit_300ng_FI6v3) %>%
+		           rename(Other=SI06_fit_300ng_FI6v3)
+fit_table_vsSI06 <- FitTable %>%
+		      select(HK68_fit_no_antibody, SI06_fit_no_antibody, color, size) %>%
+		      rename(HK68=HK68_fit_no_antibody) %>%
+		      rename(Other=SI06_fit_no_antibody)
+fit_table_vsMich15 <- FitTable %>%
+		        select(HK68_fit_no_antibody, Mich15_fit_no_antibody, color, size) %>%
+		        rename(HK68=HK68_fit_no_antibody) %>%
+		        rename(Other=Mich15_fit_no_antibody)
+fit_table_vsH1 <- FitTable %>%
+	            select(SI06_fit_no_antibody, Mich15_fit_no_antibody, color, size) %>%
+	            rename(HK68=SI06_fit_no_antibody) %>%
+	            rename(Other=Mich15_fit_no_antibody)
 plot_scatter(fit_table_vsWSN,'graph/scatter_fit_WSN_compare.png','HK68 (no antibody)','WSN (no antibody)')
 plot_scatter(fit_table_vsPerth09,'graph/scatter_fit_Perth09_compare.png','HK68 (no antibody)','Perth09 (no antibody)')
 plot_scatter(fit_table_vsPerth09_FI6v3,'graph/scatter_fit_Perth09_FI6v3_compare.png','HK68 (2.5 ug/mL FI6v3)','Perth09 (15 ug/mL FI6v3)')
 plot_scatter(fit_table_vsWSN_FI6v3,'graph/scatter_fit_WSN_FI6v3_compare.png','HK68 (2.5 ug/mL FI6v3)','WSN (0.2 ug/mL FI6v3)')
 plot_scatter(fit_table_vsWSN_CR9114,'graph/scatter_fit_WSN_CR9114_compare.png','HK68 (10 ug/mL CR9114)','WSN (0.1 ug/mL CR9114)')
+plot_scatter(fit_table_vsH1_FI6v3,'graph/scatter_fit_H1_FI6v3_compare.png','Mich15 (0.3 ug/mL FI6v3)','SI06 (0.3 ug/mL FI6v3)')
+plot_scatter(fit_table_vsSI06,'graph/scatter_fit_SI06_compare.png','HK68 (no antibody)','SI06 (no antibody)')
+plot_scatter(fit_table_vsMich15,'graph/scatter_fit_Mich15_compare.png','HK68 (no antibody)','Mich15 (no antibody)')
+plot_scatter(fit_table_vsH1,'graph/scatter_fit_H1_compare.png','SO06 (no antibody)','Mich15 (no antibody)')
