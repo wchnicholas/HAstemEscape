@@ -48,6 +48,14 @@ Dlib <- read_tsv('result/Fitness_D.tsv') %>%
           mutate(color=factor(mapply(coloring,mut),levels=c('Nonsense','Missense'))) %>%
           arrange(desc(color)) %>%
           filter(Input_count >= 20)
+SI06_lib <- read_tsv('result/Fitness_SI06.tsv') %>%
+	      mutate(color=factor(mapply(coloring,mut),levels=c('Nonsense','Missense'))) %>%
+	      arrange(desc(color)) %>%
+	      filter(Input_count >= 20)
+Mich15_lib <- read_tsv('result/Fitness_Mich15.tsv') %>%
+	        mutate(color=factor(mapply(coloring,mut),levels=c('Nonsense','Missense'))) %>%
+	        arrange(desc(color)) %>%
+	        filter(Input_count >= 20)
 Slib_A0 <- Slib %>% 
              rename(Rep1fit=rep1_no_antibody_fit) %>%
              rename(Rep2fit=rep2_no_antibody_fit)
@@ -78,6 +86,18 @@ Dlib_F1 <- Dlib %>%
 Dlib_F5 <- Dlib %>% 
              rename(Rep1fit=rep1_2500ng_FI6v3_fit) %>%
              rename(Rep2fit=rep2_2500ng_FI6v3_fit)
+SI06_A0 <- SI06_lib %>%
+             rename(Rep1fit=rep1_no_antibody_fit) %>%
+             rename(Rep2fit=rep2_no_antibody_fit)
+Mich15_A0 <- Mich15_lib %>%
+               rename(Rep1fit=rep1_no_antibody_fit) %>%
+               rename(Rep2fit=rep2_no_antibody_fit)
+SI06_F1 <- SI06_lib %>%
+             rename(Rep1fit=rep1_300ng_FI6v3_fit) %>%
+             rename(Rep2fit=rep2_300ng_FI6v3_fit)
+Mich15_F1 <- Mich15_lib %>%
+               rename(Rep1fit=rep1_300ng_FI6v3_fit) %>%
+               rename(Rep2fit=rep2_300ng_FI6v3_fit)
 p1  <- Plot_RepvsRep(Slib_A0,'Replicate 1','Replicate 2',expression(bold('no antibody')))
 p2  <- Plot_RepvsRep(Slib_A1,'Replicate 1','Replicate 2',expression(bold("CR9114 (2"~"\u03bc"*"g/mL)")))
 p3  <- Plot_RepvsRep(Slib_A5,'Replicate 1','Replicate 2',expression(bold("CR9114 (10"~"\u03bc"*"g/mL)")))
@@ -90,3 +110,10 @@ p9  <- Plot_RepvsRep(Dlib_F1,'Replicate 1','Replicate 2',expression(bold("FI6v3 
 p10 <- Plot_RepvsRep(Dlib_F5,'Replicate 1','Replicate 2',expression(bold("FI6v3 (2.5"~"\u03bc"*"g/mL)")))
 p <- grid.arrange(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,nrow=2,ncol=5)
 ggsave('graph/QC_replicates_cor.png',p,height=2.8,width=6.5)
+
+p_SI06_A0 <- Plot_RepvsRep(SI06_A0,'Replicate 1','Replicate 2',expression(bold('no antibody')))
+p_SI06_F1 <- Plot_RepvsRep(SI06_F1,'Replicate 1','Replicate 2',expression(bold('FI6v3 (0.3"~"\u03bc"*"g/mL)"')))
+p_Mich15_A0 <- Plot_RepvsRep(Mich15_A0,'Replicate 1','Replicate 2',expression(bold('no antibody')))
+p_Mich15_F1 <- Plot_RepvsRep(Mich15_F1,'Replicate 1','Replicate 2',expression(bold('FI6v3 (0.3"~"\u03bc"*"g/mL)"')))
+p <- grid.arrange(p_SI06_A0, p_SI06_F1, p_Mich15_A0, p_Mich15_F1, nrow=1,ncol=4)
+ggsave('graph/QC_replicates_cor_H1.png',p,height=1.4,width=5.5)
