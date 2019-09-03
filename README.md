@@ -1,4 +1,4 @@
-## ANALYSIS FOR HK68 H3N2 HA STEM DEEP MUTATIONAL SCANNING
+## ANALYSIS HA STEM DEEP MUTATIONAL SCANNING
 This study aims to search for mutations that can escape HA stem-binding broadly neutralizing antibodies (bnAbs). The repository here describes the analysis for the deep mutational scanning experiment that focuses on HA2 residues 42, 45, 46, 47, 48, 49, 52, and 111.
 
 ### INPUT FILE
@@ -11,7 +11,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 * [./doc/WSN\_WTheatmap.tsv](./doc/WSN\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap for H1/WSN.
 * [./doc/Perth09\_WTheatmap.tsv](./doc/Perth09\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap for H3/Perth09.
 
-### ANALYSIS PIPELINE FOR HK68 (H3N2), PERTH09 (H3N2), and WSN (H1N1)
+### ANALYSIS PIPELINE FOR H3/HK68, H3/PERTH09, H1/WSN
 1. [./script/HK68\_Stem\_read\_to\_count.py](./script/HK68_Stem_read_to_count.py): Converts raw reads to variant counts.
     - Input files: 
       - Raw sequencing reads in fastq/ folder
@@ -45,6 +45,8 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
       - [./result/Resist\_S.tsv](./result/Resist\_S.tsv)
       - [./result/Fitness\_Perth09.tsv](./result/Fitness\_Perth09.tsv)
       - [./result/Fitness\_WSN.tsv](./result/Fitness\_WSN.tsv)
+      - [./result/Resist\_SI06.tsv](./result/Resist\_SI06.tsv)
+      - [./result/Resist\_Mich15.tsv](./result/Resist\_Mich15.tsv)
     - Output file: [./result/Fit\_compare.tsv](./result/Fit\_compare.tsv)
 
 ### ANALYSIS PIPELINE FOR H1/SI06 and H1/MICH15
