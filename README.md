@@ -1,7 +1,7 @@
 ## ANALYSIS HA STEM DEEP MUTATIONAL SCANNING
 This study aims to search for mutations that can escape HA stem-binding broadly neutralizing antibodies (bnAbs). The repository here describes the analysis for the deep mutational scanning experiment that focuses on HA2 residues 42, 45, 46, 47, 48, 49, 52, and 111.
 
-### INPUT FILE
+### I. INPUT FILE
 * All raw sequencing reads, which can be downloaded from NIH SRA database [PRJNA510654](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA510654), should be placed in fastq/ folder. The filename for read 1 should match those described in [./doc/SampleID.tsv](./doc/SampleID.tsv). The filename for read 2 should be the same as read 1 except "R1" is replaced by "R2".
 * [Deep mutational scanning data from Bloom lab](https://github.com/jbloomlab/HA\_stalkbnAb\_MAP) are in the [./Bloom\_data/](./Bloom\_data/) folder
 * [./doc/SampleID.tsv](./doc/SampleID.tsv): Describes the sample identity for each fastq file.
@@ -11,7 +11,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
 * [./doc/WSN\_WTheatmap.tsv](./doc/WSN\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap for H1/WSN.
 * [./doc/Perth09\_WTheatmap.tsv](./doc/Perth09\_WTheatmap.tsv): Describes the location of the boxed (wild type residues) when plotting heatmap for H3/Perth09.
 
-### ANALYSIS PIPELINE FOR H3/HK68, H3/PERTH09, H1/WSN
+### II. ANALYSIS PIPELINE FOR H3/HK68
 1. [./script/HK68\_Stem\_read\_to\_count.py](./script/HK68_Stem_read_to_count.py): Converts raw reads to variant counts.
     - Input files: 
       - Raw sequencing reads in fastq/ folder
@@ -39,7 +39,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
     - Output file:
       - [./result/Heatmap\_D.tsv](./result/Heatmap\_D.tsv)
 
-### ANALYSIS PIPELINE FOR H1/WSN, H3/PERTH09
+### III. ANALYSIS PIPELINE FOR H1/WSN, H3/PERTH09
 1. [./script/Perth09\_count2fit.py](./script/Perth09\_count2fit.py): Computes relative fitness from H3/Perth09 count data.
     - Input file:
       - Bloom\_data/Perth09\/\*.csv
@@ -51,7 +51,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
     - Output file:
       - [./result/Fitness\_WSN.tsv](./result/Fitness\_WSN.tsv)
 
-### ANALYSIS PIPELINE FOR H1/SI06 and H1/MICH15
+### IV. ANALYSIS PIPELINE FOR H1/SI06 and H1/MICH15
 1. [./script/H1\_Stem\_read\_to\_count.py](./script/H1_Stem_read_to_count.py): Converts raw reads to variant counts.
     - Input files: 
       - Raw sequencing reads in fastq/ folder
@@ -72,7 +72,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
       - [./result/Resist\_SI06.tsv](./result/Resist\_SI06.tsv)
       - [./result/Resist\_Mich15.tsv](./result/Resist\_Mich15.tsv)
 
-### COMPILING RESULTS INTO A SINGLE TABLE
+### V. COMPILING RESULTS INTO A SINGLE TABLE
 1. [./script/Compare\_strains.py](./script/Compare\_strains.py): Compile single mutant fitness data from H3/HK68, H3/Perth09, and H1/WSN into a single file
     - Input files:
       - [./result/Resist\_S.tsv](./result/Resist\_S.tsv)
@@ -83,7 +83,7 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
     - Output file:
       - [./result/Fit\_compare.tsv](./result/Fit\_compare.tsv)
 
-### PLOTTING
+### VI. PLOTTING
 1. [./script/Plot\_rep\_cor.R](./script/Plot\_rep\_cor.R): Plots correlation between replicates 
     - Input files: 
       - [./result/Fitness\_S.tsv](./result/Fitness\_S.tsv)
