@@ -38,6 +38,12 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
       - [./result/Resist\_D.tsv](./result/Resist\_D.tsv)
     - Output file:
       - [./result/Heatmap\_D.tsv](./result/Heatmap\_D.tsv)
+5. [./script/Epi_analysis.py](./script/Epi_analysis.py): Computes the expected relative resistance for each double mutant.
+    - Input file:
+      - [./result/Resist\_S.tsv](./result/Resist\_S.tsv)
+      - [./result/Resist\_D.tsv](./result/Resist\_D.tsv)
+    - Output file:
+      - [./result/Resist_epi.tsv](./result/Resist_epi.tsv)
 
 ### III. ANALYSIS PIPELINE FOR H1/WSN, H3/PERTH09
 1. [./script/Perth09\_count2fit.py](./script/Perth09\_count2fit.py): Computes relative fitness from H3/Perth09 count data.
@@ -161,3 +167,9 @@ This study aims to search for mutations that can escape HA stem-binding broadly 
       - [./Bloom\_data/WSN\_antibody\_CR9114\_median.csv](./Bloom\_data/WSN\_antibody\_CR9114\_median.csv)
     - Output files:
       - [./graph/frac\_surviving\_compare.png](./graph/frac\_surviving\_compare.png)
+12. [./script/Plot_epi_resist.R](./script/Plot_epi_resist.R): Plots relative resistance vs expected relative resistance for HK68 double mutants.
+    - Input file:
+      - [./result/Resist_epi.tsv](./result/Resist_epi.tsv)
+    - Output file:
+      - [./graph/epi_resist_CR9114.png](./graph/epi_resist_CR9114.png)
+      - [./graph/epi_resist_FI6v3.png](./graph/epi_resist_FI6v3.png)
